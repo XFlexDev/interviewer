@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>interview</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' fill='%23fff' text-anchor='middle'%3Ei%3C/text%3E%3C/svg%3E"/>
+</head>
+<body>
+<div id="app">
+
+  <!-- SETUP -->
+  <section id="scr-setup" class="screen active">
+    <div class="setup-col">
+      <header class="brand"><span class="dot"></span>interview</header>
+      <p class="tagline">a hiring manager on the phone. kinda.</p>
+
+      <div class="grid2">
+        <label class="field"><span>company</span><input id="f-company" placeholder="Burger King" maxlength="80" autocomplete="off"/></label>
+        <label class="field"><span>role</span><input id="f-role" placeholder="Team Member" maxlength="80" autocomplete="off"/></label>
+      </div>
+      <div class="grid2">
+        <label class="field"><span>interviewer name <em>(optional)</em></span><input id="f-name" placeholder="random" maxlength="40" autocomplete="off"/></label>
+        <div class="field"><span>gender</span>
+          <div class="seg" id="seg-gender">
+            <button data-v="f" class="on">female</button><button data-v="m">male</button>
+          </div>
+        </div>
+      </div>
+      <div class="field"><span>attitude</span>
+        <div class="seg col" id="seg-temper">
+          <button data-v="warm">warm &amp; encouraging</button>
+          <button data-v="standard" class="on">standard professional</button>
+          <button data-v="tough">tough &amp; skeptical</button>
+          <button data-v="unhinged">easily offended</button>
+          <button data-v="roast">insulting as fuck</button>
+        </div>
+      </div>
+      <label class="field"><span>length <b id="min-v">10 min</b></span><input id="f-minutes" type="range" min="5" max="20" value="10"/></label>
+      <label class="field"><span>job notes <em>(optional)</em></span><textarea id="f-notes" rows="3" maxlength="1500" placeholder="paste the job post or anything the interviewer should know"></textarea></label>
+
+      <div class="row">
+        <label class="check"><input type="checkbox" id="f-audio" checked/><i></i><span>interviewer voice</span></label>
+      </div>
+
+      <button id="btn-join" class="join">join the call</button>
+      <p class="fine">voice interview · ai interviewer · ~10 min · scorecard at the end</p>
+    </div>
+  </section>
+
+  <!-- CALL -->
+  <section id="scr-call" class="screen">
+    <div class="call-grid">
+      <div id="tile-ai" class="tile ai-tile">
+        <div class="office-bg" id="office-bg"></div>
+        <canvas id="avatar"></canvas>
+        <div class="tile-tag" id="ai-tag">interviewer</div>
+        <div class="tile-state" id="ai-state">connecting…</div>
+        <div class="tile-top">
+          <span class="rec" id="rec-dot"></span><span id="clock">0:00</span>
+        </div>
+      </div>
+      <div class="call-bottom solo">
+        <div id="caps" class="caps"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button id="btn-mute" class="ctl">mute</button>
+      <button id="btn-end" class="ctl end">end call</button>
+    </div>
+    <div id="toast" class="toast"></div>
+  </section>
+
+  <!-- REPORT -->
+  <section id="scr-report" class="screen">
+    <div class="report-col" id="report-col">
+      <header class="brand"><span class="dot"></span>interview</header>
+      <div id="report-body"><p class="fine">writing your scorecard…</p></div>
+      <div class="report-actions">
+        <button id="btn-again" class="join small">run it back</button>
+        <button id="btn-copy" class="ghost">copy transcript</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>
